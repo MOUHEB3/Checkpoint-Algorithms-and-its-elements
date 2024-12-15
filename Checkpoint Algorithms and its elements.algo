@@ -1,0 +1,36 @@
+ALGORITHM AnalyzeSentence
+VAR
+    lengthCount, wordCount, vowelCount: INTEGER
+    sentence: STRING
+BEGIN
+    // Step 1: Initialize counters
+    lengthCount := 0
+    wordCount := 1  // Start with 1 word
+    vowelCount := 0
+
+    // Step 2: Remove the period at the end of the sentence
+    sentence := sentence.substring(0, sentence.length - 1)
+
+    // Step 3: Loop through each character in the sentence
+    FOR i := 0 TO sentence.length - 1 DO
+        VAR character := sentence.charAt(i)
+
+        // Step 3a: Count the length of the sentence
+        lengthCount := lengthCount + 1
+
+        // Step 3b: Check if the character is a space (word separator)
+        IF character = ' ' THEN
+            wordCount := wordCount + 1
+        END IF
+
+        // Step 3c: Check if the character is a vowel
+        IF character = 'a' OR character = 'e' OR character = 'i' OR character = 'o' OR character = 'u' THEN
+            vowelCount := vowelCount + 1
+        END IF
+    END FOR
+
+    // Step 4: Output the results using 'write'
+    write("Length of the sentence (excluding period): ", lengthCount)
+    write("Number of words: ", wordCount)
+    write("Number of vowels: ", vowelCount)
+END
